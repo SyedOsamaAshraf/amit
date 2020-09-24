@@ -55,7 +55,7 @@ app.config["MAIL_DEBUG"]=True
 mail = Mail(app)
 
 
-cred = credentials.Certificate("C:/Users/amit/Desktop/login/ihubems-3dcee-firebase-adminsdk-1h52n-39ec34e394.json")
+cred = credentials.Certificate("ihubems-3dcee-firebase-adminsdk-1h52n-39ec34e394.json")
 default_app=initialize_app(cred)
 db = firestore.client()
 user=db.collection('employee')
