@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title>ihubems</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+  
+<script>
+
+</script>
+<style>
+
+
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+button{
+width:150px;
+height:30px;
+margin:3px;
+padding:100px;
+}
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.column {
+  float:left;
+  width: 400px;
+  height:600px;
+  margin:0px -10px;
+  padding: 10px;
+   /* Should be removed. Only for demonstration */
+}
+.column1 {
+  margin:0px 0px;
+  width:300px;
+}
+.border {
+    display: inline-block;
+    width: 700px;
+    height:400px;
+    margin: 6px;
+  }
+h3.ex3 {
+  border-style:double;
+  background-color: white;
+  width: 400px;
+  height: 570px;
+  margin:20px 30px;
+  overflow: auto;
+}
+
+h3.ex4 {
+  border-style:double;
+  background-color: white;
+  width: 700px;
+  height: 100%px;
+  margin:20px 170px;
+  overflow: auto;
+}
+
+#ex5{
+border-style:double;
+  background-color: white;
+  width: 400px;
+  height: 620px;
+  margin:20px 30px;
+  overflow: auto;
+
+}
+
+
+table{
+margin:-20px 10px;
+height:20px;
+}
+
+h3.name {
+  margin:5px 10px;
+}
+div.ex3 {  
+border-style:double;
+  width: 300px;
+  height: 600px;
+  margin:30px;
+  overflow: auto;
+}
+
+head{
+margin:0px;
+}
+
+#forr1{
+width:700px;
+}
+
+#forr2{
+width:600px;
+height:10px
+margin:-50px 20px;
+background-color:blue:
+}
+
+#image{
+height:100px;
+width:100px;
+}
+#list{
+margin:0px -10px;
+}
+
+#container2{
+width:150px;
+height:150px;
+margin:0px 0px;
+}
+
+#container3{
+width:1px;
+margin:10px 10px;
+}
+#container4{
+width:180px;
+margin:10px 10px;
+}
+header {
+  background-color:black;
+  margin:0px -270px;
+  
+  padding: 10px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+#btn{
+margin:0px 10px;
+width:200px;
+height:20px;
+}
+
+nav {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #ccc;
+  padding: 40px;
+}
+#cont {  
+  margin:0px -50px;
+
+  width: 310px;
+  height: 310px;
+ 
+}
+
+
+#hea{
+margin:0px 400px;
+}
+</style>
+</head>
+<body>
+
+<div class="sidenav">
+  <ul class="nav nav-pills list-group">
+     	  <li><a href="#tab_a"  data-toggle="pill" ><i class="fa fa-user-plus"  style="font-size:300%;"></i></a></li>
+               <hr class="mt-2 mb-3"/>
+  
+            <li><a href="#tab_b" data-toggle="pill"><i class="fa fa-users"  style="font-size:300%;"></i></a></li>
+            <hr class="my-3"/>
+            <li><a href="#tab_c" data-toggle="pill"><i class="fa fa-bar-chart"  style="font-size:300%;"></i></a></li> 
+			<hr class="my-3"/>
+            <li><a href="#tab_dd" data-toggle="pill"><i class="fa fa-cogs"  style="font-size:300%;"></i></a></li> 			
+      </ul>
+</div>
+
+
+<div class="main">
+<div class="tab-content">
+<!-- add employee page -->
+    <div class="tab-pane" id="tab_a">
+     	<div class="tab-content">		
+		         <div class="tab-pane" id="tab_f">				 
+	        		  </div>
+         				  <div class="tab-pane" id="tab_g">
+    						  <div class="w3-container">
+    							  <div class="container"></div>
+    								  <div class="row">
+								  </div>
+							  </div>
+						  </div>
+					  </div>	
+				</div>
+				<div class="tab-pane active" id="tab_b">
+    				<div class="row" id="list">	
+     					<h3 class="ex4">
+     						<form  method = "POST">
+     							<table class="table" id="box">
+								
+
+     								  <thead> 
+        									  <td><h3 id="name"></h3></td>								
+										    <tr>
+    											<th><h3>Email</h3></th>
+ 												<td><input type ="Email" name = "Email" /></td>											 
+											</tr>
+											<tr>											    
+    										<td>Gender</td>
+											<td>
+     											<input type="radio" id="male" name="gender" value="male">
+  												<label for="male">Male</label><br>
+												<input type="radio" id="female" name="gender" value="female">
+												<label for="female">Female</label><br>
+												<input type="radio" id="other" name="gender" value="other">
+												<label for="other">Other</label>
+											</td>																					 
+											</tr>
+											<tr>
+     										    <td><p>Birthday</p> </td>
+ 												<td><input type="date" id="birthday" name="Date of birth"></td>											 
+											</tr>
+											<tr>
+											    <td><p>Pan</p> </td>
+											    <td><input type="number" id="number"  name="No."></td>												 
+											</tr>
+    										<tr>
+     											<th><h3>Address</h3></th>
+												 <td><input type = "text" name = "address" /></td>												 
+											</tr>
+											<tr>
+     											<td><p>Aadhaar</p></td>
+											    <td><input type="number" value="123456" name="Aadhaar"></td>											 
+											</tr>
+											
+											
+											
+										
+											    <tr>												  
+												      <th>Dashboard</th>	
+											    						
+												        <th>  
+														   
+												             <tr>
+     															 <td>Certification</td>
+												                    <td><input type="text" id="Dashboard" name="Certifications"></td> 												
+												              </tr>
+															  <tr>
+        															  <td>Details</td>
+																	  <td><input type="text" id="Dashboard"  name="Details"></td>
+															  </tr>
+															  <tr>
+    															  <td>Performance</td>
+																  <td><input type="text" id="Dashboard" name="performance"></td>												
+															  </tr>
+															  <tr>
+     															  <td>Trainings</td>
+																  <td><input type="text" id="Dashboard" name="Tranings"></td>												
+																  </tr>	
+														</th>
+												</tr>		
+														
+																  
+															  
+															  
+														  
+														  
+														  <table class="table">
+														  <thead>
+														   <tr>
+												                <th>Exprience</th>
+															</tr>
+															</thead>								
+ 																	<tbody>
+																	   <tr>
+    																	   <td>City</td>
+ 																		   <td><input type="text" id="Exprience" name="City"></td>
+																	   </tr>
+																	   <tr>
+																	      <td>Country</td>
+    																		  <td><input type="text" id="Exprience" name="Country"></td>
+																		  </tr>
+   																	  <tr>
+     																	  <td>Designation</td>
+																		  <td><input type="text" id="Exprience" name="Designation"></td>
+																	  </tr>
+																	  <tr>
+    																	  <td>From Date</td>	
+																		  <td><input type="date" id="Exprience" name="From Date"></td>
+																	  </tr>
+																	  <tr>
+    																	  <td>To date</td>
+																		  <td><input type="date" id="Exprience" name="To date"></td>
+																	  </tr>
+																	  <tr>
+    																	  <td>Organisation</td>
+																		  <td><input type="text" id="Exprience" name="organisation"></td>
+																	  </tr>
+																	  <tr>
+     																	  <td>Status</td>	
+																		  <td><input type="text" id="Exprience" name="STatus"></td>
+																	  </tr>										
+															         </tbody>
+															      </table>
+																 											 
+											
+											   
+											    <table class="table">
+												<thead>
+												  <tr>
+											         <th>Master Date</th>									
+													</tr>
+												</thead>	 
+													 
+       													 
+														  <tbody>
+														  <tr>
+    														  <td>Base Location</td>
+															  <td><input type="text" id="Master Date" name="Base location"></td>
+														  </tr>
+    													  <tr>
+      														  <td>Confirmed</td>
+															  <td><input type="text" id="Master Date" name="Confirmed"></td>
+														  </tr>
+														  <tr>
+    														  <td>Current Location</td>
+															  <td><input type="text" id="Master Date" name="Current Location"></td>
+														  </tr>
+														  <tr>
+    														  <td>Delivery Manager</td>												
+															  <td><input type="text" id="Master Date" name="Delivery Manager"></td>
+														   </tr>
+														   
+														  <tr>
+    														  <td>Delivery Unit</td>												
+															  <td><input type="text" id="Master Date" name="Delivery Unit"></td>
+														   </tr> 
+														   
+														   <tr>
+     														   <td>Department</td>
+															   <td><input type="text" id="Master Date" name="Department"></td>
+														   </tr>
+														   <tr>
+     														   <td>Designation</td>
+															   <td><input type="text" id="Master Date"  name="Designation"></td>
+														   </tr>
+														   <tr>
+     														   <td>First Name</td>
+															   <td><input type="text" id="Master Date" name="First Name" value="mahajan"></td>
+														   </tr>
+														   <tr>
+    														   <td>Middle Name</td>	
+															   <td><input type="text" id="Master Date" name="Middle Name"></td>												
+															 </tr>												
+															 <tr>
+    															 <td>Reporting Manager</td>	
+																 <td><input type="text" id="Master Date" name="Reporting Manager"></td>
+															 </tr>
+															 <tr>
+     															 <td>Role</td>	
+																 <td><input type="text" id="Master Date"  name="Role"></td>
+															 </tr>
+															 <tr>
+     															 <td>Team</td>	
+																 <td><input type="text" id="Master Date" name="Team"></td>
+															 </tr>
+														 </tbody>													 
+												 										
+											</table>
+											<table class="table">
+											<tr>
+											 <th><p>Passport</p></th>											 
+    											<tbody>
+     												<tr>
+    													<td>Date of Expiry</td>
+														<td><input type="date" id="birthday" value="6/6/6" name="Date of Expiry"></td>															
+													</tr>
+													<tr>
+     													<td>Passport Number</td>
+														<td><input type="text" value="1234556" name="Pasport Number"></td>	
+													</tr>
+												  <tbody>					 
+											</tr>
+											</table>
+											
+											<table class="table">	
+											<tr>
+											      <th><p>personal Identity information</p> </th>
+											</tr>    																					 
+    											<tbody>
+     												<tr>
+    													<td>Date of Birth</td>
+														<td><input type="date" id="birthday" name="Date of Birth"></td>	
+													</tr>
+		     										<tr>
+        												<td>Disability</td>
+														<td><input type="text" id="birthday" name="Disability"></td>															
+                                                  </tr>
+												  <tr>
+     												  <td>Gender</td>
+													  <td><input type="text"  name="Gender"></td>													  
+												  </tr>
+												  <tr>
+     												  <td>Marital Status</td>
+													  <td><input type="text"  name="Marital Status"></td>
+												  </tr>												  
+												  <tr>
+     												  <td>Nationality</td>
+													  <td><input type="text"  name="Nationality"></td>	
+												  </tr>												  
+												  <tr>
+     												  <td>Place of birth</td>
+													  <td><input type="text"  name="Place of Birth"></td>	
+												  </tr>
+												  <tr>
+     												  <td>State</td>
+													  <td><input type="text"  name="State"></td>	
+												  </tr>
+												  </tbody>
+											     </table>																	
+										 
+										  <table class="table">										    
+											    <th><p>project</p></th>
+											   <td>										 
+    											<tbody>
+     												<tr>
+    													<td>From Date</td>
+														<td><input type="date" id="birthday" name="Form Date"></td>	
+													</tr>
+													<tr>        												
+													     <td>To Date</td>
+														 <td><input type="date" id="birthday" name="To Date"></td>	
+													 </tr>
+													 <tr>
+        												<td>project code</td>
+														<td><input type="text"  name="Project code"></td>	
+													</tr>
+												</tbody>
+												</td>
+                                                 </table>												
+																				  								  
+									  
+									  
+									       	<table class="table">
+											<thead>
+		     								 <td><p>Qualification</p></td>
+											  </thead> 										   
+											   										 
+    											<tbody>
+     												<tr>
+    													<td>Additional Info</td>
+														<td><input type="text"  name="Additional Info"></td>	
+													</tr>
+												<tr>
+      												<td>Branch</td>
+													<td><input type="text"  name="Branch"></td>															
+                                                 </tr>
+												  <tr>
+        												<td>Collage Name</td>
+														<td><input type="text"  name="Collage Name"></td>															
+                                                  </tr>
+												  <tr>
+        												<td>Location</td>
+														<td><input type="text"  name="Location"></td>	
+														
+                                                  </tr>
+												  <tr>
+        												<td>passing year</td>
+														<td><input type="date" id="birthday" name="passing year"></td>	
+														
+                                                  </tr>
+												  <tr>
+     												  <td>Qualification</td>
+													  <td><input type="text"  name="Qualification"></td>															
+                                                  </tr>
+												  <tr>
+     												  <td>University</td>
+													  <td><input type="text"  name="University"></td>															
+                                                  </tr>
+												  
+												  </tbody>
+												  </table>	
+												  
+												  <table class="table">
+											<thead>
+		     								 <td><p>Address</p></td>
+											  </thead> 										   
+											   										 
+    											<tbody>
+												   <thead>
+		     								 <td><p>present</p></td>
+											  </thead> 	
+												
+     												<tr>
+    													<td><h4>Area</h4>
+														<input type="text" id="input1"  name="address"></td>
+														<td><h4>City</h4>
+														<input type="text" id="input1"  name="presentCity"></td>
+	
+													</tr>
+												<tr>
+      												<td><h4>Full Name</h4>
+													<input type="text" id="input1"  name="presentfull"></td>
+													<td><h4>Langitude</h4>
+													<input type="text" id="input1"  name="presentLangitude"></td>
+													
+                                                 </tr>
+												  <tr>
+        												 <td><h4>Latitude</h4>
+														 <input type="text" id="input1"  name="presentLatitude"></td>
+														 <td><h4>Pincode</h4>
+														 <input type="text" id="input1"  name="presentPincode"></td>
+
+														 
+                                                  </tr>
+												  <tr>
+        												<td><h4>state</h4>
+														<input type="text" id="input1"  name="presentstate123"></td>
+														<td><h4>Address line 1</h4>
+														<input type="text" id="input1"  name="presentAddress line 1"></td>
+											   </tr>
+														
+                                                  </tr>
+												  <tr>
+        												<td><h4>Address line 2</h4>
+														<input type="text" id="input1"  name="presentAddress line 2"></td>
+														 <td><h4>Address line 3</h4>
+														 <input type="text" id="input1"  name="presentAddress line 3"></td>
+														
+                                                  </tr>
+												  
+												  
+												  
+												  </tbody>
+												  </table>	
+												  
+												  
+												  <table class="table">
+																				   
+											   										 
+    											<tbody>
+												   <thead>
+		     								 <td><p>premanent</p></td>
+											  </thead> 	
+												
+     												<tr>
+    													<td><h4>Area</h4>
+														<input type="text" id="input1"  name="address"></td>
+														<td><h4>City</h4>
+														<input type="text" id="input1"  name="presentCity"></td>
+	
+													</tr>
+												<tr>
+      												<td><h4>Full Name</h4>
+													<input type="text" id="input1"  name="presentfull"></td>
+													<td><h4>Langitude</h4>
+													<input type="text" id="input1"  name="presentLangitude"></td>
+													
+                                                 </tr>
+												  <tr>
+        												 <td><h4>Latitude</h4>
+														 <input type="text" id="input1"  name="presentLatitude"></td>
+														 <td><h4>Pincode</h4>
+														 <input type="text" id="input1"  name="presentPincode"></td>
+
+														 
+                                                  </tr>
+												  <tr>
+        												<td><h4>state</h4>
+														<input type="text" id="input1"  name="presentstate123"></td>
+														<td><h4>Address line 1</h4>
+														<input type="text" id="input1"  name="presentAddress line 1"></td>
+											   </tr>
+														
+                                                  </tr>
+												  <tr>
+        												<td><h4>Address line 2</h4>
+														<input type="text" id="input1"  name="presentAddress line 2"></td>
+														 <td><h4>Address line 3</h4>
+														 <input type="text" id="input1"  name="presentAddress line 3"></td>
+														
+                                                  </tr>
+												  
+												  
+												  
+												  </tbody>
+												  </table>	
+												  
+												  <table class="table">
+											<thead>
+		     								 
+											  </thead> 										   
+											   										 
+    											<tbody>
+												   <thead>
+		     								 <td><p>Emergency</p></td>
+											  </thead> 	
+												
+     												<tr>
+    													<td><h4>Area</h4>
+														<input type="text" id="input1"  name="address"></td>
+														<td><h4>City</h4>
+														<input type="text" id="input1"  name="presentCity"></td>
+	
+													</tr>
+												<tr>
+      												<td><h4>Full Name</h4>
+													<input type="text" id="input1"  name="presentfull"></td>
+													<td><h4>Langitude</h4>
+													<input type="text" id="input1"  name="presentLangitude"></td>
+													
+                                                 </tr>
+												  <tr>
+        												 <td><h4>Latitude</h4>
+														 <input type="text" id="input1"  name="presentLatitude"></td>
+														 <td><h4>Pincode</h4>
+														 <input type="text" id="input1"  name="presentPincode"></td>
+
+														 
+                                                  </tr>
+												  <tr>
+        												<td><h4>state</h4>
+														<input type="text" id="input1"  name="presentstate123"></td>
+														<td><h4>Address line 1</h4>
+														<input type="text" id="input1"  name="presentAddress line 1"></td>
+											   </tr>
+														
+                                                  </tr>
+												  <tr>
+        												<td><h4>Address line 2</h4>
+														<input type="text" id="input1"  name="presentAddress line 2"></td>
+														 <td><h4>Address line 3</h4>
+														 <input type="text" id="input1"  name="presentAddress line 3"></td>
+														
+                                                  </tr>
+												  
+												  
+												  
+												  </tbody>
+												  </table>	
+												  
+												  
+												  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+												  
+											   
+										   						  
+									  </table>	
+                                     <p><input type = "submit" value = "submit" id="save" /></p>									  
+
+						</form>	
+                       					
+						</h3>                    							
+					</div>						  
+	    		  </div>
+				 
+
+
+
+</div>
+
+
+
+</div>
+			
+
+   
+</body>
+</html> 

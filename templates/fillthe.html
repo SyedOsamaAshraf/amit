@@ -1,0 +1,1471 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title>ihubems</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+  
+<script>
+$(document).ready(function(){  
+  
+    var da=$("#person").val();  
+    $.ajax({type:"POST",url:"/process",data:{"new_freq":da} ,success: function(result){    
+     	
+		$.each( result, function add( i, l ){
+                               	console.log(l["Address"]["Address Type"]["Emergency"]["Address Line 1"]);
+							  $("#tab").append("<div class='btn-group btn-group-lg'>"+"<li class='inline' id='my'><button class='btn btn-primary' id='add_tab_"+l["Master_data"]["First Name"]+"'><h3 id='my1'>"+l["Master_data"]["First Name"]+"</h3></button></li>"+"<button class='btn btn-primary' id='del"+i+"'><h3>delete</h3></button>"+"</div>");
+                              
+							  $("#del"+i+"").on('click', function(){
+							  window.location = "http://localhost:5000/"+i;    
+							  });
+							  
+							  $('#'+'add_tab_'+l["Master_data"]["First Name"]).click(function(){
+							  $("#edit").append("<button class='btn btn-primary' id='edit"+l.name+"'>Edit</button>");
+							  $("#pan").text(l["pan"]["No."]);
+							  $("#Aadhaar").text(l["Aadhaar"]["Number"]);
+							  $("#dateofbirth").text(l["Birthday"]["birthday"]);
+							  $("#Certification").text(l["Dashboard"]["Certifications"]);
+							  $("#Details1").text(l["Dashboard"]["Details"]);
+							  $("#Tranings").text(l["Dashboard"]["Tranings"]);
+							  $("#per").text(l["Dashboard"]["performance"]);
+							  $("#City").text(l["Exprience"]["City"]);
+							  $("#Country").text(l["Exprience"]["Country"]);
+							  $("#Desi").text(l["Exprience"]["Designation"]);
+							  $("#ate").text(l["Exprience"]["Form Date"]);
+							  $("#nisat").text(l["Exprience"]["Organization"]);
+							  $("#BaseLocation").text(l["Master_data"]["Base Location"]);
+							  $("#confirmed1").text(l["Master_data"]["Confirmed"]);
+							  $("#currentLocation").text(l["Master_data"]["Current Location"]);
+							  $("#DeliveryManager").text(l["Master_data"]["Delivery Manager"]);
+							  $("#Delivery").text(l["Master_data"]["Delivery Unit"]);
+							  $("#Deli").text(l["Master_data"]["Delivery Unit"]);
+							  $("#Department22").text(l["Master_data"]["Department"]);
+							  $("#Designation13").text(l["Master_data"]["Designation"]);
+							  $("#Email123").text(l["Master_data"]["Email"]);
+							  $("#Firstname123").text(l["Master_data"]["First Name"]);
+							  $("#Mid").text(l["Master_data"]["Middel Name"]);
+							  $("#ReportingManager").text(l["Master_data"]["Reporting Manager"]);
+							  $("#Role3").text(l["Master_data"]["Role"]);
+							  $("#team1").text(l["Master_data"]["Team"]);
+							  $("#pannn").text(l["pan"]["No."]);
+							  $("#Da").text(l["Passport"]["Date of Expiry"]);
+							  $("#Pass").text(l["Passport"]["Pasport Number"]);
+							  $("#birt").text(l["pernonal_Identity_information"]["Date of Birth"]);
+							  $("#sabil").text(l["pernonal_Identity_information"]["Disability"]);
+							  $("#gen").text(l["pernonal_Identity_information"]["Gender"]);
+							  $("#marStatus").text(l["pernonal_Identity_information"]["Marital Status"]);
+							  $("#Nation").text(l["pernonal_Identity_information"]["Nationality"]);
+							  $("#plaBirth").text(l["pernonal_Identity_information"]["Place of Birth"]);							  
+							  $("#stateeee").text(l["pernonal_Identity_information"]["State"]);
+							  $("#thd").text(l["project"]["From Date"]);
+							  $("#bi").text(l["project"]["To Date"]);
+							  $("#pro").text(l["project"]["Project code"]);
+							   $("#Addit").text(l["Qualification"]["Additional Info"]);
+							   $("#Bra").text(l["Qualification"]["Branch"]);
+							   $("#coll").text(l["Qualification"]["Collage Name"]);
+							   $("#cati").text(l["Qualification"]["Location"]);
+							  
+							   $("#add88").text(l["Address"]["Address Type"]["Emergency"]["Address Line 1"]);
+							   $("#add99").text(l["Address"]["Address Type"]["Emergency"]["Address Line 2"]);
+							   $("#add00").text(l["Address"]["Address Type"]["Emergency"]["Address Line 3"]);
+							   $("#are45").text(l["Address"]["Address Type"]["Emergency"]["Area"]);
+							   $("#city55").text(l["Address"]["Address Type"]["Emergency"]["City"]);
+							   $("#fff55").text(l["Address"]["Address Type"]["Emergency"]["Full Name"]);
+							   $("#lan123").text(l["Address"]["Address Type"]["Emergency"]["Langitude"]);
+							   $("#lat67").text(l["Address"]["Address Type"]["Emergency"]["Latitude"]);
+							   $("#pin1233").text(l["Address"]["Address Type"]["Emergency"]["Pincode"]);
+							   $("#sat888").text(l["Address"]["Address Type"]["Emergency"]["State"]);
+							   $("#add33").text(l["Address"]["Address Type"]["Permanent"]["Address Line 1"]);
+							   $("#add44").text(l["Address"]["Address Type"]["Permanent"]["Address Line 2"]);
+							   $("#add55").text(l["Address"]["Address Type"]["Permanent"]["Address Line 3"]);
+							   $("#area22").text(l["Address"]["Address Type"]["Permanent"]["Area"]);
+							   $("#area23").text(l["Address"]["Address Type"]["Permanent"]["City"]);
+							   $("#area24").text(l["Address"]["Address Type"]["Permanent"]["Full Name"]);
+							   $("#lan22").text(l["Address"]["Address Type"]["Permanent"]["Langitude"]);
+							   $("#lan33").text(l["Address"]["Address Type"]["Permanent"]["Latitude"]);
+							   $("#lan44").text(l["Address"]["Address Type"]["Permanent"]["Pincode"]);
+							   $("#state123").text(l["Address"]["Address Type"]["Permanent"]["State"]);
+							   $("#add11").text(l["Address"]["Address Type"]["Present"]["Address Line 1"]);
+							   $("#add12").text(l["Address"]["Address Type"]["Present"]["Address Line 2"]);
+							   $("#add13").text(l["Address"]["Address Type"]["Present"]["Address Line 3"]);
+							   $("#area1").text(l["Address"]["Address Type"]["Present"]["Area"]);
+							   $("#city1").text(l["Address"]["Address Type"]["Present"]["City"]);
+							   $("#ff1").text(l["Address"]["Address Type"]["Present"]["Full Name"]);
+							   $("#lan").text(l["Address"]["Address Type"]["Present"]["Langitude"]);
+							   $("#lat").text(l["Address"]["Address Type"]["Present"]["Latitude"]);
+							   $("#pin").text(l["Address"]["Address Type"]["Present"]["Pincode"]);
+							   $("#staa").text(l["Address"]["Address Type"]["Present"]["State"]);
+							   
+							   
+								 
+								 
+								 
+								
+		
+							  
+							  
+							  
+							  
+							  
+							
+							  });
+							  
+							  
+							  $('#'+'add_tab_'+l["Master_data"]["First Name"]).on('click', function(){
+							  console.log(l["Master_data"]["First Name"]) 
+							      $("#edit").html("<button class='btn btn-primary' id='edit"+l["Master_data"]["First Name"]+"'>Edit</button>");
+								  $('#'+'edit'+l["Master_data"]["First Name"]).on('click', function(){
+								  window.location = "http://localhost:5000/edit/"+i;    
+							  });								  
+							  });
+		});
+		}});
+		});
+</script>
+  
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+button{
+width:150px;
+height:30px;
+margin:3px;
+padding:100px;
+}
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.column {
+  float:left;
+  width: 400px;
+  height:600px;
+  margin:0px -10px;
+  padding: 10px;
+   /* Should be removed. Only for demonstration */
+}
+.column1 {
+  margin:0px 0px;
+  width:300px;
+}
+.border {
+    display: inline-block;
+    width: 700px;
+    height:400px;
+    margin: 6px;
+  }
+h3.ex3 {
+  border: 3px solid #ccc;
+  background-color: white;
+  width: 330px;
+  height: 570px;
+  margin:20px 30px;
+  overflow: auto;
+}
+
+h3.ex77 {
+  border: 3px solid #ccc;
+  background-color: white;
+  width: 700px;
+  height: 60%;
+  
+  overflow: auto;
+}
+
+
+
+#ex5{
+border: 3px solid #ccc;
+  background-color: white;
+  width: 400px;
+  height: 620px;
+  margin:20px 30px;
+  overflow: auto;
+
+}
+
+
+
+
+h3.name {
+  margin:5px 10px;
+}
+div.ex3 {  
+border: 3px solid #ccc;
+  width: 300px;
+  height: 610px;
+  margin: 30px 80px;
+  overflow: auto;
+}
+
+h3.ex44 {  
+border: 3px solid #ccc;
+background-color:#ccc;
+  width: 900px;
+  height: 100%;
+  margin:5% 10%;
+  overflow: auto;
+}
+
+
+head{
+margin:0px;
+}
+
+#forr1{
+width:700px;
+}
+
+#forr2{
+width:700px;
+height:100px
+margin:-50px 20px;
+background-color:blue:
+}
+
+#image{
+height:100px;
+width:100px;
+}
+#list{
+margin:0px -10px;
+}
+
+#container2{
+width:150px;
+height:150px;
+margin:0px 0px;
+}
+
+#container3{
+width:1px;
+margin:10px 10px;
+}
+#container4{
+width:180px;
+margin:10px 10px;
+}
+header {
+  background-color:black;
+  margin:0px -270px;
+  
+  padding: 10px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+#btn{
+margin:0px 10px;
+width:200px;
+height:20px;
+}
+
+nav {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #ccc;
+  padding: 40px;
+}
+#cont {  
+  margin:0px -50px;
+
+  width: 310px;
+  height: 310px;
+ 
+}
+
+
+#hea{
+margin:0px 400px;
+}
+#box{
+width:600px
+}
+#forr7{
+width:20px;
+}
+#box{
+height:50%;
+}
+#table12{
+margin:2px 60px;
+}
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input:focus {
+  border: 3px solid #555;
+}
+
+#input1 {
+  width: 90px;
+  height:30px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+ 
+
+</style>
+</head>
+<body>
+<!-- navigation menu -->
+<div class="sidenav">
+  <ul class="nav nav-pills list-group">
+     	  <li><a href="#tab_a"  data-toggle="pill" ><i class="fa fa-user-plus"  style="font-size:300%;"></i></a></li>
+               <hr class="mt-2 mb-3"/>
+  
+            <li><a href="#tab_b" data-toggle="pill"><i class="fa fa-users"  style="font-size:300%;"></i></a></li>
+            <hr class="my-3"/>
+            <li><a href="#tab_c" data-toggle="pill"><i class="fa fa-bar-chart"  style="font-size:300%;"></i></a></li> 
+			<hr class="my-3"/>
+            <li><a href="#tab_dd" data-toggle="pill"><i class="fa fa-cogs"  style="font-size:300%;"></i></a></li> 			
+      </ul>
+</div>
+<!-- navigation menu -->
+
+
+<div class="main">
+<div class="tab-content">
+
+<!-- add employee page -->
+    <div class="tab-pane active" id="tab_a">
+        <header>
+    		  <div id="hea"> 
+    			  <ul class="nav nav-pills" role="tablist">
+    				  <li class="nav-item">
+					  <a class="nav-link active" data-toggle="pill" href="#tab_f"><div id="btn"><h4>Add the employee</h4></div></a>
+					  </li>
+					  <li class="nav-item">
+					  <a class="nav-link" data-toggle="pill" href="#tab_g"><div id="btn"><h4>send the password</h4></div></a>
+				    </li>
+                 </ul>
+	        </div>
+		</header>
+		
+		<div class="tab-content">	
+<!-- add employee form -->		
+		         <div class="tab-pane" id="tab_f">
+     				 <h3 class="ex44">	
+					 
+					 <form action = "http://localhost:5000/result" method = "POST">  
+                                    					 
+    							<table class="table" style="width:50%" id="table12">
+								
+								        <thead>
+    										<tr>
+     											<th>EMPLOYEE</th>
+												<th>FORM</th>
+												<th></th>
+												</tr>
+											</thead>
+								
+								
+								          <tr>
+  										    <td><h4>Email</h4> </td>
+											<td><input type ="Email" name = "Email" /></td>
+										</tr>									
+ 										<tr>
+    										<td><h4>Gender</h4></td>
+											<td>
+     											<input type="radio" id="male" name="gender" value="male">
+  												<label for="male"><h4>Male</h4></label><br>
+												<input type="radio" id="female" name="gender" value="female">
+												<label for="female"><h4>Female</h4></label><br>
+												<input type="radio" id="other" name="gender" value="other">
+												<label for="other"><h4>Other</h4></label>
+											</td>
+										</tr>					
+										
+										<tr>
+  										    <td><h4>Birthday</h4></td>
+											<td><input type="date" id="birthday" name="Date of birth"></td>
+										</tr>
+										
+										<tr>
+  										   <td><h4>Aadhaar</h4></td>
+											 <td><input type="number"  name="Aadhaar"></td>
+										</tr>
+										
+										<tr>
+  										    <td><h4>Pan</h4> </td>
+											<td><input type="number" id="number"  name="No."></td>
+										</tr>	
+										
+										
+										
+										<tr>
+    																<td><h4>Exprience</h4></td>
+																	<td>
+    																	<table class="table">
+ 																	<tbody>
+																	   <tr>
+    																	   <td><h4>City</h4></td>
+ 																		   <td><input type="text" id="Exprience" name="City"></td>
+																	   </tr>
+																	   <tr>
+																	      <td><h4>Country</h4></td>
+    																		  <td><input type="text" id="Exprience" name="Country"></td>
+																		  </tr>
+   																	  <tr>
+     																	  <td><h4>Designation</h4></td>
+																		  <td><input type="text" id="Exprience" name="Designation"></td>
+																	  </tr>
+																	  <tr>
+    																	  <td><h4>From Date</h4></td>	
+																		  <td><input type="date" id="Exprience" name="From Date"></td>
+																	  </tr>
+																	  <tr>
+    																	  <td><h4>To date</h4></td>
+																		  <td><input type="date" id="Exprience" name="To date"></td>
+																	  </tr>
+																	  <tr>
+    																	  <td><h4>Organisation</h4></td>
+																		  <td><input type="text" id="Exprience" name="organisation"></td>
+																	  </tr>
+																	  <tr>
+     																	  <td><h4>Status</h4></td>	
+																		  <td><input type="text" id="Exprience" name="STatus"></td>
+																	  </tr>										
+															         </tbody>
+															            </table>
+																  </td>
+															</tr>
+															
+															
+															<tr>
+													  <td><h4>Master Date</h4></td>									
+													  <td>
+       													  <table class="table">
+														  <tbody>
+														  <tr>
+    														  <td><h4>Base Location</h4></td>
+															  <td><input type="text" id="Master Date" name="Base location"></td>
+														  </tr>
+    													  <tr>
+      														  <td><h4>Confirmed</h4></td>
+															  <td><input type="text" id="Master Date" name="Confirmed"></td>
+														  </tr>
+														  <tr>
+    														  <td><h4>Current Location</h4></td>
+															  <td><input type="text" id="Master Date" name="Current Location"></td>
+														  </tr>
+														  <tr>
+    														  <td><h4>Delivery Manager</h4></td>												
+															  <td><input type="text" id="Master Date" name="Delivery Manager"></td>
+														   </tr>
+														   
+														  <tr>
+    														  <td><h4>Delivery Unit</h4></td>												
+															  <td><input type="text" id="Master Date" name="Delivery Unit"></td>
+														   </tr> 
+														   
+														   <tr>
+     														   <td><h4>Department</h4></td>
+															   <td><input type="text" id="Master Date" name="Department"></td>
+														   </tr>
+														   <tr>
+     														   <td><h4>Designation</h4></td>
+															   <td><input type="text" id="Master Date"  name="Designation"></td>
+														   </tr>
+														   <tr>
+     														   <td><h4>First Name</h4></td>
+															   <td><input type="text" id="Master Date" name="First Name" value="mahajan"></td>
+														   </tr>
+														   <tr>
+    														   <td><h4>Middle Name</h4></td>	
+															   <td><input type="text" id="Master Date" name="Middle Name"></td>												
+															 </tr>												
+															 <tr>
+    															 <td><h4>Reporting Manager</h4></td>	
+																 <td><input type="text" id="Master Date" name="Reporting Manager"></td>
+															 </tr>
+															 <tr>
+     															 <td><h4>Role</h4></td>	
+																 <td><input type="text" id="Master Date"  name="Role"></td>
+															 </tr>
+															 <tr>
+     															 <td><h4>Team</h4></td>	
+																 <td><input type="text" id="Master Date" name="Team"></td>
+															 </tr>
+														 </tbody>
+													 </table>
+												 </td>
+											 </tr>
+											 
+											 
+											 <tr>
+    										 <td><h4>Passport</h4></td>
+											 <td>						 
+												 <table class="table">											 
+    											<tbody>
+     												<tr>
+    													<td><h4>Date of Expiry</h4></td>
+														<td><input type="date" id="birthday" value="6/6/6" name="Date of Expiry"></td>															
+													</tr>
+													<tr>
+     													<td><h4>Passport Number</h4></td>
+														<td><input type="text" value="1234556" name="Pasport Number"></td>	
+													</tr>
+												  <tbody>
+												  </table>						 
+											 </td>							 
+										 </tr>
+										 
+										 
+										 <tr>
+										    <td><h4>personal Identity information</h4> </td>
+											<td>
+     											<table class="table">											 
+    											<tbody>
+     												<tr>
+    													<td><h4>Date of Birth</h4></td>
+														<td><input type="date" id="birthday" name="Date of Birth"></td>	
+													</tr>
+		     										<tr>
+        												<td><h4>Disability</h4></td>
+														<td><input type="text" id="birthday" name="Disability"></td>															
+                                                  </tr>
+												  <tr>
+     												  <td><h4>Gender</h4></td>
+													  <td><input type="text"  name="Gender"></td>													  
+												  </tr>
+												  <tr>
+     												  <td><h4>Marital Status</h4></td>
+													  <td><input type="text"  name="Marital Status"></td>
+												  </tr>												  
+												  <tr>
+     												  <td><h4>Nationality</h4></td>
+													  <td><input type="text"  name="Nationality"></td>	
+												  </tr>												  
+												  <tr>
+     												  <td><h4>Place of birth</h4></td>
+													  <td><input type="text"  name="Place of Birth"></td>	
+												  </tr>
+												  <tr>
+     												  <td><h4>State</h4></td>
+													  <td><input type="text"  name="State"></td>	
+												  </tr>
+												  </tbody>
+											     </table>											
+											</td>
+										</tr>
+										
+										
+										<tr>
+											   <td><h4>project</h4></td>
+											   <td><table class="table">										 
+    											<tbody>
+     												<tr>
+    													<td><h4>From Date</h4></td>
+														<td><input type="date" id="birthday" name="Form Date"></td>	
+													</tr>
+													<tr>        												
+													     <td><h4>To Date</h4></td>
+														 <td><input type="date" id="birthday" name="To Date"></td>	
+													 </tr>
+													 <tr>
+        												<td><h4>project code</h4></td>
+														<td><input type="text"  name="Project code"></td>	
+													</tr>
+												</tbody></table></td>
+										   </tr>
+										   
+										   
+										        									 <tr>
+		     								 <td><h4>Qualification</h4></td>
+											   <td>											   
+											   <table class="table">										 
+    											<tbody>
+     												<tr>
+    													<td><h4>Additional Info</h4></td>
+														<td><input type="text"  name="Additional Info"></td>	
+													</tr>
+												<tr>
+      												<td><h4>Branch</h4></td>
+													<td><input type="text"  name="Branch"></td>															
+                                                 </tr>
+												  <tr>
+        												<td><h4>Collage Name</h4></td>
+														<td><input type="text"  name="Collage Name"></td>															
+                                                  </tr>
+												  <tr>
+        												<td><h4>Location</h4></td>
+														<td><input type="text"  name="Location"></td>	
+														
+                                                  </tr>
+												  <tr>
+        												<td><h4>passing year</h4></td>
+														<td><input type="date" id="birthday" name="passing year"></td>	
+														
+                                                  </tr>
+												  <tr>
+     												  <td><h4>Qualification</h4></td>
+													  <td><input type="text"  name="Qualification"></td>															
+                                                  </tr>
+												  <tr>
+     												  <td><h4>University</h4></td>
+													  <td><input type="text"  name="University"></td>															
+                                                  </tr>
+												  </tbody></table>											   
+											   </td>
+										   </tr>
+										   
+										   
+										   <tr>
+    									<td><h4>Dashboard</h4></td>									
+										</tr>
+										<tr>
+									    					
+    										<tr>
+    											<td><h4>Certification</h4></td>
+												<td><input type="text" id="Dashboard" name="Certifications"></td> 												
+											</tr>
+											<tr>
+     											<td><h4>Details</h4></td>
+												<td><input type="text" id="Dashboard"  name="Details"></td>												
+											</tr>
+    											<tr>
+ 												    <td><h4>Performance</h4></td>
+												<td><input type="text" id="Dashboard" name="performance"></td>												
+												</tr>
+												<tr>
+ 												   <td><h4>Trainings</h4></td>
+												<td><input type="text" id="Dashboard" name="Tranings"></td>												
+												</tr>						
+	        							
+										</tr>
+
+
+
+
+
+
+										
+									 
+    								 <tr>
+    								<td><h4>Address</h4></td>				
+  									<td>
+									<table class="table" id="table13">
+     									<thead>
+    										<tr>										   
+											   <table style="width:100%">
+											   <tr>
+											   <td><h4>present</h4></td>									  
+											   </tr>											   
+											   <tr>
+											   <td><h4>Area</h4>
+											   <input type="text" id="input1"  name="address"></td>
+											   <td><h4>City</h4>
+											   <input type="text" id="input1"  name="presentCity"></td>
+											   <td><h4>Full Name</h4>
+											   <input type="text" id="input1"  name="presentfull"></td>
+											   </tr>
+											   <tr>										   
+											    <td><h4>Langitude</h4>
+											   <input type="text" id="input1"  name="presentLangitude"></td>
+											    <td><h4>Latitude</h4>
+											   <input type="text" id="input1"  name="presentLatitude"></td>
+											    <td><h4>Pincode</h4>
+											   <input type="text" id="input1"  name="presentPincode"></td>
+											   
+											   <td><h4>state</h4>
+											   <input type="text" id="input1"  name="presentstate123"></td>
+											   </tr>
+											   
+											   <tr>
+											   <td><h4>Address line 1</h4>
+											   <input type="text" id="input1"  name="presentAddress line 1"></td>
+											    <td><h4>Address line 2</h4>
+											   <input type="text" id="input1"  name="presentAddress line 2"></td>
+											    <td><h4>Address line 3</h4>
+											   <input type="text" id="input1"  name="presentAddress line 3"></td>
+											   
+											   </tr>
+											   </table>					
+											   
+											   
+											   <table style="width:100%">
+											   <tr>
+											   <td><h4>premanent</h4></td>									  
+											   </tr>											   
+											   <tr>
+											   <td><h4>Area</h4>
+											   <input type="text" id="input1"  name="permanentaddress"></td>
+											   <td><h4>City</h4>
+											   <input type="text" id="input1"  name="permanentCity"></td>
+											   <td><h4>Full Name</h4>
+											   <input type="text" id="input1"  name="permanentfull"></td>
+											   </tr>
+											   <tr>										   
+											    <td><h4>Langitude</h4>
+											   <input type="text" id="input1"  name="permanentLangitude"></td>
+											    <td><h4>Latitude</h4>
+											   <input type="text" id="input1"  name="permanentLatitude"></td>
+											    <td><h4>Pincode</h4>
+											   <input type="text" id="input1"  name="permanentPincode"></td>
+											   
+											   <td><h4>state</h4>
+											   <input type="text" id="input1"  name="permanentstate"></td>
+											   </tr>
+											   
+											   <tr>
+											   <td><h4>Address line 1</h4>
+											   <input type="text" id="input1"  name="permanentAddress line 1"></td>
+											    <td><h4>Address line 2</h4>
+											   <input type="text" id="input1"  name="permanentAddress line 2"></td>
+											    <td><h4>Address line 3</h4>
+											   <input type="text" id="input1"  name="permanentAddress line 3"></td>
+											   
+											   </tr>
+											   </table>				
+											   
+											   <table style="width:100%">
+											   <tr>
+											   <td><h4>Eergency</h4></td>									  
+											   </tr>											   
+											   <tr>
+											   <td><h4>Area</h4>
+											   <input type="text" id="input1"  name="Eergencyaddress"></td>
+											   <td><h4>City</h4>
+											   <input type="text" id="input1"  name="EergencyCity"></td>
+											   <td><h4>Full Name</h4>
+											   <input type="text" id="input1"  name="Eergencyfull"></td>
+											   </tr>
+											   <tr>										   
+											    <td><h4>Langitude</h4>
+											   <input type="text" id="input1"  name="EergencyLangitude"></td>
+											    <td><h4>Latitude</h4>
+											   <input type="text" id="input1"  name="EergencyLatitude"></td>
+											    <td><h4>Pincode</h4>
+											   <input type="text" id="input1"  name="EergencyPincode"></td>
+											   
+											   <td><h4>state</h4>
+											   <input type="text" id="input1"  name="Eergencystate"></td>
+											   </tr>
+											   
+											   <tr>
+											   <td><h4>Address line 1</h4>
+											   <input type="text" id="input1"  name="EergencyAddress line 1"></td>
+											    <td><h4>Address line 2</h4>
+											   <input type="text" id="input1"  name="EergencyAddress line 2"></td>
+											    <td><h4>Address line 3</h4>
+											   <input type="text" id="input1"  name="EergencyAddress line 3"></td>
+											   
+											   </tr>
+											   </table>				
+
+											   
+											   
+											</tr>
+									    </thead>
+													
+									</table>
+												</td>
+											</tr>  
+									 									 
+									 
+									 
+									 
+									 
+    									 
+									 									 
+									
+     									
+										
+			            			
+    													
+    														
+     															
+														
+													
+													  
+										 							
+									
+									    
+								    									 
+									 
+     									 
+									 
+									 
+    									 
+																	 
+									 
+        									 
+									 									 
+									 
+
+									
+								 </table>
+     								 <button class="btn btn-primary" id="submit"><h4>add the employee</h4></button>
+								 </form>						
+                            </h3>							
+	    		  </div>
+				  <!-- add employee form -->
+				  <div class="tab-pane" id="tab_g">
+        				  <div class="w3-container">
+        						  <div class="container"></div>
+								  <div class="row">
+    								  <div id="ex5"> 
+    									  <div class="column" style="background-color:#ccc;">	
+	    									  <h2>ADMIN SECTION</h2>
+    	    									  <form action = "http://localhost:5000/admin"   method = "POST">
+    												  <div class="form-group">
+    													  <label><h4>SENDER EMAIL</h4></label>
+														  <input type="name" class="form-control form-control-lg" name="name" value="" placeholder="Username or Email">
+													  </div>
+												  <div class="form-group">
+     												  <label><h4>ADMIN MESSAGE<h4></label>
+													  <input type="text" class="form-control form-control-lg" name="password" value="" placeholder="message">
+    							                   </div>	
+												   
+                                                  												   
+								                </form>
+  												<h4>ADD EMAIL ID</h4>		
+    												<div class="form-group">
+													    <input type="text" class="form-control form-control-lg" placeholder="Username" id="person" name="username">												
+													</div>
+    													<button class="btn btn-primary" id="btnCreate"><h4>Create</h4></button>
+											</div>
+										</div>
+										<div class="ex3">
+     										<div class="column1" style="background-color:white;">
+     											<button class="btn btn-primary btn-block" id="btnLoad"><h4>Load</h4></button>
+     												<h3 class="well well-sm" id="phonebook"></h3>	
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+					
+			<!-- add employee page -->	
+             <!-- list of employee -->			
+					<div class="tab-pane" id="tab_b">
+    					<div class="row" id="list">	
+						<h3 class="ex3">
+					    	<ol id="tab"><h3>list of employee<h3></ol>									    
+						</h3>
+     						<h3 class="ex77">
+							<!--  employee profile -->
+     							<form id="forr7">
+								
+     								<table class="table" id="box">
+    									<thead>
+       										<th><h3 id="Name"><h4>Name</h4></h3></th>	
+											<th><img src="img_girl.jpg"  width="30" height="30"><th>
+										</thead>										
+										<thead>
+ 										<tr>
+    										<td><h4>Gender</h4></td>
+											<td><h4 id="gender">male</h4></td>
+										</tr>
+										
+										<tr>
+    										<td><h4>Email</h4></td>
+											<td><h4 id="Email">xyz@gmail.com</h4></td>
+										</tr>
+										
+										<tr>
+    										<td><h4>Date of Birth</h4></td>
+											<td><h4 id="dateofbirth">xyz</h4></td>
+										</tr>
+										<tr>
+    										<td><h4>Address</h4></td>
+											<td><h4 id="address">xyz</h4></td>
+										</tr>
+										
+										<tr>
+    										<td><h4>Pan:</h4></td>
+											<td><h4 id="pannn">xyz</h4></td>
+										</tr>
+										
+										<tr>
+    										<td><h4>Aadhaar</h4></td>
+					     					<td><h4 id="Aadhaar">xyz</h4></td>
+										</tr>
+										
+										
+										 
+										
+										<tr>
+    										<td><h4>passport<h4></td>
+ 											<td>
+     											<table class="table">
+    												<thead>
+    													<tr>
+    														<td><h4>Date of Expiry</h4></td>
+															<td><h4 id="Da"></h4>	</td>														
+														</tr>
+													</thead>
+													<tbody>
+     													<tr>
+														<td><h4>Passport Number</h4></td>
+														<td><h4 id="Pass"></h4></td>													
+													</tr>												
+    													</tbody>
+													</table>
+												</td>
+											</tr>  
+																
+										<tr>
+    										<td><h4>Dashboard</h4></td>
+ 											<td>
+     											<table class="table">
+    												<thead>
+    													<tr>
+    														<td><h4>Certification</h4></td>
+															<td><h4 id="Certification"></h4></td>															
+														</tr>
+													</thead>
+													<tbody>
+     													<tr>
+														<td><h4>Details</h4></td>
+														<td><h4 id="Details1"></h4></td>														
+													</tr>
+													<tr>
+     													<td><h4>Performance</h4></td>
+												         <td><h4 id="Per"></h4></td>																
+													</tr>
+													<tr>
+     													<td><h4>Trainings</h4></td>
+														<td><h4 id="Tranings"></h4>	</td>													
+													</tr>
+    													</tbody>
+													</table>
+												</td>
+											</tr>  
+                                           <tr>
+    										<td><h4>Master Data</h4></td>
+ 											<td>
+     											<table class="table">
+    												<thead>
+    													<tr>
+    														<td><h4>Base location</h4></td>
+															<td><h4 id="BaseLocation"></h4></td>															
+														</tr>
+													</thead>
+													<tbody>
+     													<tr>
+														<td><h4>confirmed</h4></td>
+														<td><h4 id="confirmed1"></h4></td>														
+													</tr>
+													<tr>
+     													<td><h4>current Location</h4></td>
+												         <td><h4 id="currentLocation"></h4>		</td>
+														
+													</tr>
+													<tr>
+     													<td><h4>Delivery Unit</h4></td>
+														<td><h4 id="Deli"></h4></td>
+														
+													</tr>
+													
+													<tr>
+     													<td><h4>Department</h4></td>
+														<td><h4 id="Department22"></h4></td>
+														
+													</tr>
+													
+													<tr>
+     													<td><h4>Designation</h4></td>
+														<td><h4 id="Designation13"></h4></td>														
+													</tr>													
+													<tr>
+     													<td><h4>Firstname</h4></td>
+														<td><h4 id="Firstname123"></h4></td>
+													</tr>									
+													<tr>
+     													<td><h4>Middle Name</h4></td>
+														<td><h4 id="Mid"></h4></td>
+														
+													</tr>
+													
+													
+													<tr>
+     													<td><h4>Reporting Manager</h4></td>
+														<td><h4 id="ReportingManager"></h4></td>
+														
+													</tr>
+													
+													
+													<tr>
+     													<td><h4>Delivery Unit</h4></td>
+														<td><h4 id="Delivery"></h4></td>
+														
+													</tr>
+													
+													<tr>
+     													<td><h4>Role</h4></td>
+														<td><h4 id="Role3"></h4></td>
+														
+													</tr>
+													
+													<tr>
+     													<td><h4>Team</h4></td>
+														<td><h4 id="team1"></h4></td>
+														
+													</tr>
+													
+    													</tbody>
+													</table>
+												</td>
+											</tr>                     
+                                            
+
+                                             <tr>
+    										<td><h4>Exprience</h4></td>
+ 											<td>
+     											<table class="table">
+    												<thead>
+    													<tr>
+    														<td><h4>City</h4></td>
+															<td><h4 id="City"></h4></td>															
+														</tr>
+													</thead>
+													<tbody>
+     													<tr>
+														<td><h4>Country</h4></td>
+														<td><h4 id="Country"></h4><td>
+														
+													</tr>
+													<tr>
+     													<td><h4>Designation</h4></td>
+												         <td><h4 id="Desi"></h4></td>		
+														
+													</tr>
+													<tr>
+     													<td><h4>From Date</h4></td>
+														<td><h4 id="ate"></h4></td>
+														
+													</tr>
+													
+													<tr>
+     													<td><h4>Organisation</h4></td>
+														<td><h4 id="nisat"></h4></td>
+														
+													</tr>
+													
+													<tr>
+     													<td><h4>Status</h4></td>
+														<td><h4 id="To Date"></h4></td>
+														
+													</tr>
+    													</tbody>
+													</table>
+												</td>
+											</tr>                     											
+
+
+                                             <tr>
+    										<td><h4>personal identity information</h4></td>
+ 											<td>
+     											<table class="table">
+    												<thead>
+    													<tr>
+    														<td><h4>Date of birth</h4></td>
+															<td><h4><td id="birt"></h4></td>
+															
+														</tr>
+													</thead>
+													<tbody>
+     													<tr>
+														<td><h4>Disability</h4></td>
+														<td><h4 id="sabil"></h4></td>
+														
+													</tr>
+													<tr>
+     													<td><h4>Gender</h4></td>
+												         <td><h4 id="gen"></h4></td>		
+														
+													</tr>
+													<tr>
+     													<td><h4>Marital Status</h4></td>
+														<td><h4 id="marStatus"></h4></td>
+														
+													</tr>
+													
+													<tr>
+     													<td><h4>Nationality</h4></td>
+														<td><h4 id="Nation"></h4></td>
+														
+													</tr>
+													
+													<tr>
+     													<td><h4>place of Birth</h4></td>
+														<td><h4 id="plaBirth"></h4></td>
+														
+													</tr>
+													
+													<tr>
+     													<td><h4>State</h4></td>
+														<td><h4 id="stateeee"></h4></td>
+														
+													</tr>
+    													</tbody>
+													</table>
+												</td>
+											</tr>      
+
+
+										<tr>
+    										<td><h4>Project</h4></td>
+ 											<td>
+     											<table class="table">
+    												<thead>
+    													<tr>
+    														<td><h4>From Date</h4></td>
+															<td><h4 id="thd"></h4></h4></td>
+															
+														</tr>
+													</thead>
+													<tbody>
+     													<tr>
+														<td><h4>To date</h4></td>
+														<td><h4 id="bi"></h4></td>
+														
+														
+													</tr>	
+													<tr>
+														<td><h4>project code</h4></td>
+														<td><h4 id="pro"></h4></td>
+														
+													</tr>	
+
+													
+    													</tbody>
+													</table>
+												</td>
+											</tr>                     											
+                                            <tr>
+    										<td><h4>Qualification</h4></td>
+ 											<td>
+     											<table class="table">
+    												<thead>
+    													<tr>
+    														<td><h4>collage Name</h4></td>
+															<td><h4 id="coll"></h4></td>
+															
+														</tr>
+													</thead>
+													<tbody>
+     													<tr>
+														<td><h4>Branch</h4></td>
+														<td><h4 id="Bra"></h4></td>
+														
+													</tr>
+													<tr>
+     													<td><h4>Location</h4></td>
+												         <td><h4 id="cati"></h4></td>		
+														
+													</tr>
+													<tr>
+     													<td><h4>passing year</h4></td>
+														<td><h4 id="yea"></h4></td>
+														
+													</tr>
+													
+													<tr>
+     													<td><h4>Univercity</h4></td>
+														<td><h4 id="sity"></h4></td>
+														
+													</tr>
+													
+													<tr>
+     													<td><h4>Additional info</h4></td>
+														<td><h4 id="Addit"></h4></td>
+														
+													</tr>
+													
+													
+													
+													
+													
+
+    													</tbody>
+														
+														
+													</table>
+													<tr>
+    								<td><h4>Address</h4></td>				
+  									<td>
+									<table class="table">
+     									<thead>
+    										<tr>										   
+											   <table style="width:100%">
+											   <tr>
+											   <td><h4>present</h4></td>									  
+											   </tr>											   
+											   <tr>
+											   <td><h4>Area</h4>
+											   <td><h4 id="area1"></h4></td>
+											   
+											   <td><h4>City</h4>
+											   <td><h4 id="city1"></h4></td>
+											   <td><h4>Full Name</h4>
+											   <td><h4 id="ff1"></h4></td>
+											   
+											   </tr>
+											   <tr>										   
+											    <td><h4>Langitude</h4>
+											   <td><h4 id="lan"></h4></td>
+											    <td><h4>Latitude</h4>
+												<td><h4 id="lat"></h4></td>
+											  
+											  <td><h4>Pincode</h4>
+											  <td><h4 id="pin"></h4></td>
+											  
+											  
+											   <td><h4>state</h4>
+											  <td><h4 id="Staa"></h4></td>
+											  </tr>
+											   
+											   <tr>
+											   <td><h4>Address line 1</h4>
+											   <td><h4 id="add11"></h4></td>
+											    <td><h4>Address line 2</h4>
+											  <td><h4 id="add12"></h4></td>
+											    <td><h4>Address line 3</h4>
+											  <td><h4 id="add13"></h4></td>
+											   
+											   </tr>
+											   </table>					
+											   
+											   
+											   <table style="width:100%">
+											   <tr>
+											   <td><h4>premanent</h4></td>									  
+											   </tr>											   
+											   <tr>
+											   <td><h4>Area</h4>
+											  <td><h4 id="area22"></h4></td>
+											   <td><h4>City</h4>
+											  <td><h4 id="area23"></h4></td>
+											   <td><h4>Full Name</h4>
+											   <td><h4 id="area24"></h4></td>
+											   </tr>
+											   <tr>										   
+											    <td><h4>Langitude</h4>
+											   <td><h4 id="lan22"></h4></td>
+											    <td><h4>Latitude</h4>
+											   <td><h4 id="lan33"></h4></td>
+											    <td><h4>Pincode</h4>
+											   <td><h4 id="lan44"></h4></td>
+											   
+											   <td><h4>state</h4>
+											   <td><h4 id="state123"></h4></td>
+											   </tr>
+											   
+											   <tr>
+											   <td><h4>Address line 1</h4>
+											   <td><h4 id="add33"></h4></td>
+											    <td><h4>Address line 2</h4>
+											   <td><h4 id="add44"></h4></td>
+											    <td><h4>Address line 3</h4>
+											   <td><h4 id="add55"></h4></td>
+											   
+											   </tr>
+											   </table>				
+											   
+											   <table style="width:100%">
+											   <tr>
+											   <td><h4>Eergency</h4></td>									  
+											   </tr>											   
+											   <tr>
+											   <td><h4>Area</h4>
+											   <td><h4 id="are45"></h4></td>
+											   <td><h4>City</h4>
+											   <td><h4 id="city55"></h4></td>
+											   <td><h4>Full Name</h4>
+											   <td><h4 id="fff55"></h4></td>
+											   </tr>
+											   <tr>										   
+											    <td><h4>Langitude</h4>
+											   <td><h4 id="lan123"></h4></td>
+											    <td><h4>Latitude</h4>
+											   <td><h4 id="lat67"></h4></td>
+											    <td><h4>Pincode</h4>
+											   <td><h4 id="pin1233"></h4></td>
+											   
+											   <td><h4>state</h4>
+											   <td><h4 id="sat888"></h4></td>
+											   </tr>
+											   
+											   <tr>
+											   <td><h4>Address line 1</h4>
+											   <td><h4 id="add88"></h4></td>
+											    <td><h4>Address line 2</h4>
+											   <td><h4 id="add99"></h4></td>
+											    <td><h4>Address line 3</h4>
+											   <td><h4 id="add00"></h4></td>
+											   
+											   </tr>
+											   </table>				
+
+											   
+											   
+											</tr>
+									    </thead>
+													
+									</table>
+												</td>
+											</tr>  
+										
+												</td>
+											</tr>                     											
+	
+
+                                        
+
+
+
+
+
+
+
+
+
+
+											
+										 </thead>										
+								  </table>
+								  
+							  </form>	
+							  <!-- employee profile -->
+							  <h3  id="edit"></h3>
+    							  						
+							  </h3>   
+						  </div>						  
+					  </div>
+					  <!-- list of employee -->
+				</div>
+           </div>
+			<script>
+    $(function () {
+        $("#btnLoad").click(loadContacts);
+        $("#btnCreate").click(createContact);
+ 
+        const baseUrl = "https://ihubems-3dcee.firebaseio.com/phonebook";
+ 
+        function loadContacts() {
+            $("#phonebook").empty();
+            $.get(baseUrl + ".json")
+                    .then(displayContacts)
+                    .catch(displayError);
+        }
+ 
+        function displayContacts(contacts) {
+            let keys = Object.keys(contacts);
+            for (let key of keys) {
+                let contact = contacts[key];
+                if (contact.person) {
+                    let li = $("<li>");
+                    li.text(contact.person + ": " + " ");
+                    li.appendTo($("#phonebook"));
+                    li.append(
+                            $("<a href='#'>[Delete]</a>").click(function () {
+                                deleteContact(key);
+                            })
+                    );
+                }
+            }
+        }
+ 
+        function displayError() {
+            $("#phonebook").html("<li>empty</li>");
+        }
+ 
+        function deleteContact(key) {
+            let delRequest = {
+                method: "DELETE",
+                url: baseUrl + "/" + key + ".json"
+            };
+            $.ajax(delRequest)
+                    .then(loadContacts)
+                    .catch(displayError);
+        }
+ 
+        function createContact() {
+            let person = $("#person").val();
+           
+ 
+            let newContact = {person};
+ 
+            let createRequest = {
+                method: "POST",
+                url: baseUrl + ".json",
+                data: JSON.stringify(newContact)
+            };
+            $.ajax(createRequest)
+                    .then(loadContacts)
+                    .catch(displayError);
+        }
+    });
+</script>
+
+
+   
+</body>
+</html> 
